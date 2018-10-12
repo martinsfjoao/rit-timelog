@@ -18,7 +18,7 @@ class App < Sinatra::Base
       
       # Selenium::WebDriver::PhantomJS.path = 'C:\Users\jmartins\Downloads\phantomjs-2.1.1-windows\phantomjs-2.1.1-windows\bin\phantomjs.exe'
       @driver = Selenium::WebDriver.for :phantomjs
-      @driver.manage.window.resize_to(1300,500)
+      @driver.manage.window.resize_to(1124, 850)
       puts "Opening TimeLog"
       @driver.navigate.to 'https://app4.timelog.com/readinessit/Registration/TimeTracking'
       sleep 5 #2
