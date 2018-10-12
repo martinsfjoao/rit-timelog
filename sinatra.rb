@@ -19,9 +19,10 @@ class App < Sinatra::Base
       # Selenium::WebDriver::PhantomJS.path = 'C:\Users\jmartins\Downloads\phantomjs-2.1.1-windows\phantomjs-2.1.1-windows\bin\phantomjs.exe'
       @driver = Selenium::WebDriver.for :phantomjs
       @driver.manage.window.resize_to(1300,500)
+      puts "Opening TimeLog"
       @driver.navigate.to 'https://app4.timelog.com/readinessit/Registration/TimeTracking'
       sleep 5 #2
-      
+      puts "Opened"
       account_input = @driver.find_element(:id, 'shortname')
       username_input = @driver.find_element(:id, 'username')
       password_input = @driver.find_element(:id, 'password')
