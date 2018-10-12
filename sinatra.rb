@@ -20,7 +20,7 @@ class App < Sinatra::Base
       @driver = Selenium::WebDriver.for :phantomjs
       #@driver.manage.window.resize_to(1300,500)
       @driver.navigate.to 'https://app4.timelog.com/readinessit/Registration/TimeTracking'
-      sleep 2
+      sleep 10 #2
       
       account_input = @driver.find_element(:id, 'shortname')
       username_input = @driver.find_element(:id, 'username')
@@ -40,7 +40,7 @@ class App < Sinatra::Base
           login_button.click
       end
       
-      sleep 2
+      sleep 10 #2
       
       main_search_input = @driver.find_element(:id, 'timeTrackingMainSearch')
       date_input = @driver.find_element(:xpath, './/input[contains(@class,"dateInput")]')
@@ -59,12 +59,12 @@ class App < Sinatra::Base
                   puts "Going to fill the Project: #{project["name"]}"
                   main_search_input.send_keys project["name"]
       
-                  sleep 3
+                  sleep 10 #3
       
                   search_result = @driver.find_element(:class, 'search-result-item')
                   search_result.click
       
-                  sleep 2
+                  sleep 10 #2
       
                   date_to_fill = (datey - datey.wday + 1 + i).strftime('%d/%m/%Y')
                   puts "Going to fill the Day: #{date_to_fill}"
@@ -73,27 +73,27 @@ class App < Sinatra::Base
                   puts "With: #{project["hours"][i]} hours"
                   hours_input.send_keys project["hours"][i]
       
-                  sleep 2
+                  sleep 10 #2
                   puts "Saving hours"
                   save_button.click
               end
           end
       end
       
-      sleep 2
+      sleep 10 #2
       puts "Filled all the hours"
       
       if payload["options"]["close_week"]
           puts "Going to Submit for approval"
           submit_button.click
-          sleep 2
+          sleep 10 #2
           send_button = @driver.find_element(:id, 'btnClosePeriod')
           send_button.click
       else
           puts "Not going to Submit for approval"
       end
       
-      sleep 2
+      sleep 10 #2
 
       puts "Done"
       
