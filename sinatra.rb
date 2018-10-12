@@ -17,8 +17,10 @@ class App < Sinatra::Base
       puts payload
       
       # Selenium::WebDriver::PhantomJS.path = 'C:\Users\jmartins\Downloads\phantomjs-2.1.1-windows\phantomjs-2.1.1-windows\bin\phantomjs.exe'
-      @driver = Selenium::WebDriver.for :phantomjs
-      @driver.manage.window.resize_to 1920, 1080
+      options = Selenium::WebDriver::Firefox::Options.new
+      options.add_argument('--headless')
+      @driver = Selenium::WebDriver.for :firefox, options: options
+      # @driver.manage.window.resize_to 1920, 1080
       puts "Opening TimeLog"
       @driver.navigate.to 'https://app4.timelog.com/readinessit/Registration/TimeTracking'
       sleep 5 #2
